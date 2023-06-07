@@ -1,0 +1,86 @@
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <title>Sesion</title>
+        <meta charset="UTF-8"/>
+    </head>
+    <body>
+        <section th:fragment="crearNuevaSesion" class="py-3 mb-3">
+            <form th:action="@{/crearNuevaSesion}" th:object="${persona}" method="POST" class="was-validated"> 
+                <div id="details" th:object="${sesion}">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <label for="nombre">[[#{persona.nombre}]]: </label>
+                                            <input type="text" class="form-control" name="nombre" required="true"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="correo">[[#{persona.correo}]] </label>
+                                            <input type="text" class="form-control" name="correo" required="true"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="celular">[[#{persona.telefono}]] </label>
+                                            <input type="text" class="form-control" name="celular" required="true"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="tipoIdentificacion">[[#{persona.tipoIdentificacion}]] </label>
+                                            <select name="tipoIdentificacion" id="tipoIdentificacion">
+                                                <option  th:each="tipoidentificacion : ${tipoIdentificaciones}" th:value="${tipoidentificacion.idTipoIdentificacion}" th:text="${tipoidentificacion.nombre}"></option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="identificacion">[[#{persona.identificacion}]] </label>
+                                            <input type="text" class="form-control" name="identificacion" required="true"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="programa">[[#{persona.programa}]] </label>
+                                            <select name="programa" id="programa">
+                                                <option  th:each="programa : ${programas}" th:value="${programa.idPrograma}" th:text="${programa.nombre}"></option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="password">[[#{persona.contrasena}]] </label>
+                                            <input type="text" class="form-control" name="password" required="true"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <section th:replace="layout/plantillaSesion :: botonGuardarSesion"></section>
+            </form>
+        </section>
+        <section th:fragment="botonGuardarSesion">
+            <div id="actions" class="py-4 mb-4 bg-light">
+                <div class="container">
+                    <div class="row"> 
+                        <div class="col-md-3">
+                            <button name="botonGuardarSesion" type="submit" class="btn btn-success btn-block">
+                                <i class="fas fa-check"></i> [[#{accion.guardar}]]
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section th:fragment="botonCrearSesion">
+            <div id="actions" class="py-4 mb-2">
+                <div class="container">
+                    <h5 class="form-group text-center">Registrarse</h5>
+                    <div class="row text-center"> 
+                        <div class="col-md-12">
+                            <a th:href="@{/cargarInformacionSesion}" class="btn btn-info btn-block">
+                                <i class="fas fa-plus" id="botonCrearSesion"></i> [[#{accion.crear-sesion}]]
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>

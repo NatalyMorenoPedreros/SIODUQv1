@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <title>Botones guardar</title>
+        <meta charset="UTF-8"/>
+    </head>
+    <body>
+        <section th:fragment="botonGuardarSolicitud">
+            <div id="actions" class="py-4 mb-4 bg-light">
+                <div class="container">
+                    <div class="row"> 
+                        <div class="col">
+                            <button type="submit" name="botonguardarsolciitud" class="btn btn-success btn-block">
+                                <i class="fas fa-check" id="botonGuardarSolicitud"></i> [[#{accion.guardar}]]
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section th:fragment="botonActualizarDocumento">
+            <div id="actions" class="py-4 mb-4 bg-light">
+                <div class="container">
+                    <div class="row"> 
+                        <div class="col">
+                            <button type="submit" class="btn btn-success btn-block">
+                                <i class="fas fa-check" id="botonActualizarDocumento"></i> [[#{accion.guardar}]]
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section th:fragment="botonAgregarSolicitudPA" th:object="${persona}">
+            <div id="actions" class="py-4 mb-2 ml-3">
+                <div class="container">
+                    <div class="row"> 
+                        <div class="col-">
+                            <a href="#" class="btn btn-info btn-block" data-toggle="modal" data-target="#botonAgregarProductividadAcademica">
+                                <i class="fas fa-plus" id="botonAgregarSolicitudPA"></i> [[#{accion.agregarPA}]]
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section th:fragment="botonAgregarSolicitudBON" th:object="${persona}">
+            <div id="actions" class="py-4 mb-2 ml-2">
+                <div class="container">
+                    <div class="row"> 
+                        <div class="col">
+                            <a href="#" class="btn btn-info btn-block" data-toggle="modal" data-target="#botonAgregarBonificacion">
+                                <i class="fas fa-plus" id="botonAgregarSolicitudBON"></i> [[#{accion.agregarBON}]]
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <title>Botones guardar</title>
+        <meta charset="UTF-8"/>
+    </head>
+    <body>
+        <section th:fragment="botonGuardarFormulario">
+            <div id="actions" class="py-4 mb-4 bg-light">
+                <div class="container">
+                    <div class="row"> 
+                        <div class="col-md-3">
+                            <button type="submit" class="btn btn-success btn-block">
+                                <i class="fas fa-check" id="botonGuardarFormulario"></i> [[#{accion.guardar}]]
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section th:fragment="botonAgregarProductividadAcademica" class="py-4 mb-4">
+            <div id="botonAgregarProductividadAcademica" class="modal fade">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header bg-info text-white">
+                            <h5 class="modal-title">PRODUCTIVIDAD ACADEMICA</h5>
+                            <button class="close" data-dismiss="modal">
+                                <span>&times;</span>
+                            </button>
+                        </div>
+                        <form th:object="${persona}">
+                            <div class="modal-body">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label for="mensaje">[[#{titulo.pa.librotexto}]]</label>
+                                                <div class="col-md-5" sec:authorize="hasRole('ROLE_USER')">
+                                                    <a th:href="@{/crearFormularioLibroTexto/} + ${persona.idPersona}" class="btn btn-info btn-block">
+                                                        <i class="fas fa-plus" id="librotexto"></i> [[#{accion.agregar}]]
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="mensaje">[[#{titulo.pa.audiovisuales}]]</label>
+                                                <div class="col-md-5" sec:authorize="hasRole('ROLE_USER')">
+                                                    <a th:href="@{/crearFormularioAudioVisuales/} + ${persona.idPersona}" class="btn btn-info btn-block">
+                                                        <i class="fas fa-plus" id="audiovisuales"></i> [[#{accion.agregar}]]
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="mensaje">[[#{titulo.pa.libroensayo}]]</label>
+                                                <div class="col-md-5" sec:authorize="hasRole('ROLE_USER')">
+                                                    <a th:href="@{/crearFormularioLibroEnsayo/} + ${persona.idPersona}" class="btn btn-info btn-block">
+                                                        <i class="fas fa-plus" id="libroensayo"></i> [[#{accion.agregar}]]
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="mensaje">[[#{titulo.pa.premio}]]</label>
+                                                <div class="col-md-5" sec:authorize="hasRole('ROLE_USER')">
+                                                    <a th:href="@{/crearFormularioPremio/} + ${persona.idPersona}" class="btn btn-info btn-block">
+                                                        <i class="fas fa-plus" id="premio"></i> [[#{accion.agregar}]]
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="mensaje">[[#{titulo.pa.libroinvestigacion}]]</label>
+                                                <div class="col-md-5" sec:authorize="hasRole('ROLE_USER')">
+                                                    <a th:href="@{/crearFormularioLibroInvestigacion/} + ${persona.idPersona}" class="btn btn-info btn-block">
+                                                        <i class="fas fa-plus" id="libroinvestigacion"></i> [[#{accion.agregar}]]
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="mensaje">[[#{titulo.bon.otrasrevistas}]]</label>
+                                                <div class="col-md-5" sec:authorize="hasRole('ROLE_USER')">
+                                                    <a th:href="@{/crearFormularioOtrasRevistas/} + ${persona.idPersona}" class="btn btn-info btn-block">
+                                                        <i class="fas fa-plus" id="otrasrevistas"></i> [[#{accion.agregar}]]
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label for="mensaje">[[#{titulo.pa.obrasartisticas}]]</label>
+                                                <div class="col-md-5" sec:authorize="hasRole('ROLE_USER')">
+                                                    <a th:href="@{/crearFormularioObraArtistica/} + ${persona.idPersona}" class="btn btn-info btn-block">
+                                                        <i class="fas fa-plus" id="obrasartisticas"></i> [[#{accion.agregar}]]
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="mensaje">[[#{titulo.pa.patente}]]</label>
+                                                <div class="col-md-5" sec:authorize="hasRole('ROLE_USER')">
+                                                    <a th:href="@{/crearFormularioPatente/} + ${persona.idPersona}" class="btn btn-info btn-block">
+                                                        <i class="fas fa-plus" id="patente"></i> [[#{accion.agregar}]]
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="mensaje">[[#{titulo.pa.producciontecnica}]]</label>
+                                                <div class="col-md-5" sec:authorize="hasRole('ROLE_USER')">
+                                                    <a th:href="@{/crearFormularioProduccionTecnica/} + ${persona.idPersona}" class="btn btn-info btn-block">
+                                                        <i class="fas fa-plus" id="producciontecnica"></i> [[#{accion.agregar}]]
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="mensaje">[[#{titulo.pa.software}]]</label>
+                                                <div class="col-md-5" sec:authorize="hasRole('ROLE_USER')">
+                                                    <a th:href="@{/crearFormularioSoftware/} + ${persona.idPersona}" class="btn btn-info btn-block">
+                                                        <i class="fas fa-plus" id="software"></i> [[#{accion.agregar}]]
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="mensaje">[[#{titulo.pa.articulos}]]</label>
+                                                <div class="col-md-5" sec:authorize="hasRole('ROLE_USER')">
+                                                    <a th:href="@{/crearFormularioArticulos/} + ${persona.idPersona}" class="btn btn-info btn-block">
+                                                        <i class="fas fa-plus" id="articulos"></i> [[#{accion.agregar}]]
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section th:fragment="botonAgregarBonificacion" class="py-4 mb-4">
+            <div id="botonAgregarBonificacion" class="modal fade">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header bg-info text-white">
+                            <h5 class="modal-title">BONIFICACIONES</h5>
+                            <button class="close" data-dismiss="modal">
+                                <span>&times;</span>
+                            </button>
+                        </div>
+                        <form th:object="${persona}">
+                            <div class="modal-body">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label for="mensaje">[[#{titulo.bon.articulosu}]]</label>
+                                                <div class="col-md-5" sec:authorize="hasRole('ROLE_USER')">
+                                                    <a th:href="@{/crearFormularioArticulosU/} + ${persona.idPersona}" class="btn btn-info btn-block">
+                                                        <i class="fas fa-plus" id="articulosu"></i> [[#{accion.agregar}]]
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="mensaje">[[#{titulo.bon.direcciontesis}]]</label>
+                                                <div class="col-md-5" sec:authorize="hasRole('ROLE_USER')">
+                                                    <a th:href="@{/crearFormularioDireccionTesis/} + ${persona.idPersona}" class="btn btn-info btn-block">
+                                                        <i class="fas fa-plus" id="direcciontesis"></i> [[#{accion.agregar}]]
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label for="mensaje">[[#{titulo.bon.posdoctoral}]]</label>
+                                                <div class="col-md-5" sec:authorize="hasRole('ROLE_USER')">
+                                                    <a th:href="@{/crearFormularioPosdoctoral/} + ${persona.idPersona}" class="btn btn-info btn-block">
+                                                        <i class="fas fa-plus" id="posdoctoral"></i> [[#{accion.agregar}]]
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="mensaje">[[#{titulo.bon.ponencia}]]</label>
+                                                <div class="col-md-5" sec:authorize="hasRole('ROLE_USER')">
+                                                    <a th:href="@{/crearFormularioPonencia/} + ${persona.idPersona}" class="btn btn-info btn-block">
+                                                        <i class="fas fa-plus" id="ponencia"></i> [[#{accion.agregar}]]
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>

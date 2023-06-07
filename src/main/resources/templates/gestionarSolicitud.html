@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head th:replace="layout/plantilla :: head">
+        <title>Gesti&oacute;n de Solicitud</title>
+    </head>
+    <body>
+        <header th:replace="layout/plantilla :: header"></header>
+        <section th:replace="layout/botonRegresar :: botonRegresar"></section>
+        <section th:replace="layout/plantillaSolicitud :: observarSolicitud"></section>
+        <section th:replace="layout/plantillaFormulario :: observarFormulario"></section>
+        <section th:replace="layout/plantillaSolicitud :: cambiarPuntaje" sec:authorize="hasRole('ROLE_ADMIN')"></section>
+        <section th:replace="layout/plantillaSolicitud :: cambiarEstado" sec:authorize="hasRole('ROLE_ADMIN')"></section>
+        <section th:replace="layout/plantillaSolicitud :: actualizarDocumento"></section>
+        <section th:replace="layout/plantillaSolicitud :: verValoracion" sec:authorize="hasRole('ROLE_ADMIN')"></section>
+        <section th:replace="layout/plantillaNotificaciones :: observarNotificaciones"></section>
+        <section th:replace="layout/plantillaNotificaciones :: agregarNotificacion"></section>
+        <footer th:replace="layout/plantilla :: footer"></footer>
+    </body>
+</html>

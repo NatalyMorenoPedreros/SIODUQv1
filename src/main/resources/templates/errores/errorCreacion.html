@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Creación fallida</title>
+        <meta charset="UTF-8"/>
+    </head>
+    <body>
+        <div>No se pudo generar su registro. 
+            La identificación y/o correo escrita se encuentra almacenada en el sistema.
+            El correo debe tener el dominio de la Universidad del Quindío.
+            No se puede volver a registrar una sesión con esa misma información.
+            <a th:href="@{/login}" >[[#{accion.regresar}]]</a>
+        </div>
+    </body>
+</html>

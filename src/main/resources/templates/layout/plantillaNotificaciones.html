@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <title>Listado notificaciones</title>
+        <meta charset="UTF-8"/>
+    </head>
+    <body>
+        <section th:fragment="observarNotificaciones" id="observarNotificaciones">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-11">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>[[#{solicitud.notificaciones}]]</h4>
+                            </div>
+                            <div th:if="${notificaciones != null and !notificaciones.empty}">
+                                <table class="table table-stryped">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th th:text="#{solicitud.notificacion.fecha-creacion}">Fecha creacion</th>
+                                            <th th:text="#{solicitud.notificacion.mensaje}">Mensaje</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr th:each="notificacion : ${notificaciones}">
+                                            <td>[[${notificacion.fechaCreacion}]]</td>
+                                            <td>[[${notificacion.mensaje}]]</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <section th:replace="layout/plantillaNotificaciones :: botonAgregarNotificacion"></section>
+                            <div class="text-center p-2" th:if="${notificaciones == null or notificaciones.empty}">
+                                <span th:text="#{solicitud.lista-vacia}">Lista vacía</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section th:fragment="botonAgregarNotificacion" th:object="${solicitud}">
+            <div id="actions" class="py-4 mb-2">
+                <div class="container">
+                    <div class="row"> 
+                        <div class="col-md-3">
+                            <a href="#agregarNotificacion" class="btn btn-info btn-block" data-toggle="modal" data-target="#agregarNotificacion">
+                                <i class="fas fa-plus"></i> [[#{accion.agregar}]]
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section th:fragment="agregarNotificacion" class="py-3 mb-3" th:object="${solicitud}">
+            <div id="agregarNotificacion" class="modal fade">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header bg-info text-white">
+                            <h5 class="modal-title">Agregar notificaci&oacute;n</h5>
+                            <button class="close" data-dismiss="modal">
+                                <span>&times;</span>
+                            </button>
+                        </div>
+                        <form  th:action="@{/crearNotificacion/} + ${solicitud.idSolicitud}" th:object="${notificacion}" method="POST" class="was-validated">
+                            <div class="modal-body" >
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col">
+                                            <div> 
+                                                <label for="mensaje">Escriba el mensaje que quiere enviar</label>
+                                                <textarea class="form-control" id="mensaje" rows="3" name="mensaje" required="true"></textarea>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <button name="botonguardar" type="submit" class="btn btn-success btn-block">
+                                                    <i class="fas fa-check"></i> [[#{accion.guardar}]]
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+        </section>
+        <section th:fragment="notificacionValoracion">
+            <div class="container">
+                <div class="row"> 
+                    <div class="col-md-12">
+                        <label>Si la revisión esta lista o desea informar al administrador un cambio por favor diligencia una notificación</label>
+                        <a href="#agregarNotificacion" class="btn btn-info btn-block" data-toggle="modal" data-target="#agregarNotificacion">
+                            <i class="fas fa-plus"></i> [[#{accion.agregar}]]
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>
